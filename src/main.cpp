@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <filesystem>
+#include <Windows.h>
 
 class Generator
 {
@@ -99,87 +100,87 @@ int main()
 		
 		for (int i = 0; i < buffer.size(); i++)
 		{
-			if (!isdigit(buffer[i]) && buffer[i] != '.') { std::cout << "NaN\n"; return -1;}
+			if (!isdigit(buffer[i]) && buffer[i] != '.') { MessageBox(0, "Not a number", "Error", MB_OK | MB_ICONERROR); return -1;}
 		}
 		gen.stroke = std::stof(buffer);
 		buffer.clear();
 
-		if (gen.stroke <= 0) { std::cout << "Stroke can not be zero or negative\n"; return -3; }
+		if (gen.stroke <= 0) { MessageBox(0, "Stroke can not be zero or negative", "Error", MB_OK | MB_ICONERROR); return -3; }
 
 		std::cout << "Rod length: ";
 		std::cin >> buffer;
 		
 		for (int i = 0; i < buffer.size(); i++)
 		{
-			if (!isdigit(buffer[i]) && buffer[i] != '.') { std::cout << "NaN\n"; return -1;}
+			if (!isdigit(buffer[i]) && buffer[i] != '.') { MessageBox(0, "Not a number", "Error", MB_OK | MB_ICONERROR); return -1; }
 		}
 		gen.rodLength = std::stof(buffer);
 		buffer.clear();
 
-		if (gen.rodLength <= 0) { std::cout << "Rod length can not be zero or negative\n"; return -3; }
+		if (gen.rodLength <= 0) { MessageBox(0, "Rod length can not be zero or negative", "Error", MB_OK | MB_ICONERROR); return -3; }
 
 		std::cout << "Exhaust port height: ";
 		std::cin >> buffer;
 		
 		for (int i = 0; i < buffer.size(); i++)
 		{
-			if (!isdigit(buffer[i]) && buffer[i] != '.') { std::cout << "NaN\n"; return -1;}
+			if (!isdigit(buffer[i]) && buffer[i] != '.') { MessageBox(0, "Not a number", "Error", MB_OK | MB_ICONERROR); return -1; }
 		}
 		gen.exhaustPortHeight = std::stof(buffer);
 		buffer.clear();
 
-		if (gen.exhaustPortHeight < 0) { std::cout << "Port height can not be negative\n"; return -3; }
+		if (gen.exhaustPortHeight < 0) { MessageBox(0, "Port height can not be negative", "Error", MB_OK | MB_ICONERROR); return -3; }
 
-		if (gen.exhaustPortHeight > gen.stroke) { std::cout << "Height can not be larger than stroke\n"; return -1; }
+		if (gen.exhaustPortHeight > gen.stroke) { MessageBox(0, "Height can not be larger than stroke", "Error", MB_OK | MB_ICONERROR); return -1; }
 
 		std::cout << "Exhaust port offset: ";
 		std::cin >> buffer;
 		
 		for (int i = 0; i < buffer.size(); i++)
 		{
-			if (!isdigit(buffer[i]) && buffer[i] != '.') { std::cout << "NaN\n"; return -1; }
+			if (!isdigit(buffer[i]) && buffer[i] != '.') { MessageBox(0, "Not a number", "Error", MB_OK | MB_ICONERROR); return -1; }
 		}
 		gen.exhaustPortOffset = std::stof(buffer);
 		buffer.clear();
 
-		if (gen.exhaustPortOffset < 0) { std::cout << "Port offset can not be negative\n"; return -3; }
+		if (gen.exhaustPortOffset < 0) { MessageBox(0, "Port offset can not be negative", "Error", MB_OK | MB_ICONERROR); return -3; }
 
-		if (gen.exhaustPortOffset > gen.stroke - gen.exhaustPortHeight) { std::cout << "Offset can not be larger than stroke\n"; return -1; }
+		if (gen.exhaustPortOffset > gen.stroke - gen.exhaustPortHeight) { MessageBox(0, "Offset can not be larger than stroke", "Error", MB_OK | MB_ICONERROR); return -1; }
 
 		std::cout << "Transfer port height: ";
 		std::cin >> buffer;
 		
 		for (int i = 0; i < buffer.size(); i++)
 		{
-			if (!isdigit(buffer[i]) && buffer[i] != '.') { std::cout << "NaN\n"; return -1; }
+			if (!isdigit(buffer[i]) && buffer[i] != '.') { MessageBox(0, "Not a number", "Error", MB_OK | MB_ICONERROR); return -1; }
 		}
 		gen.transferPortHeight = std::stof(buffer);
 		buffer.clear();
 
-		if (gen.transferPortHeight < 0) { std::cout << "Port height can not be negative\n"; return -3; }
+		if (gen.transferPortHeight < 0) { MessageBox(0, "Port height can not be negative", "Error", MB_OK | MB_ICONERROR); return -3; }
 
-		if(gen.transferPortHeight > gen.stroke) { std::cout << "Height can not be larger than stroke\n"; return -1; }
+		if(gen.transferPortHeight > gen.stroke) { MessageBox(0, "Height can not be larger than stroke", "Error", MB_OK | MB_ICONERROR); return -1; }
 
 		std::cout << "Transfer port offset: ";
 		std::cin >> buffer;
 		
 		for (int i = 0; i < buffer.size(); i++)
 		{
-			if (!isdigit(buffer[i]) && buffer[i] != '.') { std::cout << "NaN\n"; return -1; }
+			if (!isdigit(buffer[i]) && buffer[i] != '.') { MessageBox(0, "Not a number", "Error", MB_OK | MB_ICONERROR); return -1; }
 		}
 		gen.transferPortOffset = std::stof(buffer);
 		buffer.clear();
 
-		if (gen.transferPortOffset < 0) { std::cout << "Port offset can not be negative\n"; return -3; }
+		if (gen.transferPortOffset < 0) { MessageBox(0, "Port offset can not be negative", "Error", MB_OK | MB_ICONERROR);  return -3; }
 
-		if (gen.transferPortOffset > gen.stroke - gen.transferPortHeight) { std::cout << "Offset can not be larger than stroke\n"; return -1; }
+		if (gen.transferPortOffset > gen.stroke - gen.transferPortHeight) { MessageBox(0, "Offset can not be larger than stroke", "Error", MB_OK | MB_ICONERROR); return -1; }
 
 		std::cout << "Output path: ";
 		std::cin >> buffer;
 		gen.path = buffer;
 		buffer.clear();
 
-		if (!std::filesystem::exists(gen.path)) { std::cout << "Path does not exist\n"; return -2; }
+		if (!std::filesystem::exists(gen.path)) { MessageBox(0, "Path does not exist, no changes were made to your files", "Error", MB_OK | MB_ICONERROR); return -2; }
 
 		gen.Generate();
 
