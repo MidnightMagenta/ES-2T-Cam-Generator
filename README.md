@@ -19,3 +19,11 @@ Extract the archive into any folder, open ES-2T-gen.exe, specify
 This is a very rough program, you may report bugs, I will try to fix them, but I do not promise to maintain this program. If there is enough interest, I will post updates to make it more robust, and easier to use.
 
 This software may create and modify files on your system. I have added failsafes to ensure no file is accidentally corrupted, however you should avoid specifying paths that may contain sensitive data
+
+## What do these parameters do?
+
+Port height determines how tall the exhaust port is, or how large the opening is
+
+Port offset determines how far away from the top or bottom of the cylinder the port is located
+
+[!alt text](assets/2t_engine_diagram.png)
