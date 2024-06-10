@@ -26,4 +26,4 @@ Port height determines how tall the exhaust port is, or how large the opening is
 
 Port offset determines how far away from the top or bottom of the cylinder the port is located
 
-[!alt text](assets/2t_engine_diagram.png)
+![](assets/2t_engine_diagram.png)
