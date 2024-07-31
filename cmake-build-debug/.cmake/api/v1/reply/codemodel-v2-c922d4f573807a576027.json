@@ -1,0 +1,115 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "engine",
+					"jsonFile" : "directory-engine-Debug-776e2b00c6520ab49d05.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "engine",
+					"targetIndexes" : 
+					[
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "ES_2t_Camshaft_Generator",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ES_2t_Camshaft_Generator::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ES_2t_Camshaft_Generator-Debug-4ac2fad9788a6c75745f.json",
+					"name" : "ES_2t_Camshaft_Generator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ES_2t_Camshaft_Generator-dependencies::@4088515cb4035b412499",
+					"jsonFile" : "target-ES_2t_Camshaft_Generator-dependencies-Debug-cf6b63fd4c34156643fd.json",
+					"name" : "ES_2t_Camshaft_Generator-dependencies",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ES_2t_Camshaft_Generator-engine::@4088515cb4035b412499",
+					"jsonFile" : "target-ES_2t_Camshaft_Generator-engine-Debug-8c440eccdf2939ffb6be.json",
+					"name" : "ES_2t_Camshaft_Generator-engine",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "q_copy_resources::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-q_copy_resources-Debug-cc404a61ba644de42ab6.json",
+					"name" : "q_copy_resources",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "q_start_clock::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-q_start_clock-Debug-8cd1197916ae3d5b0442.json",
+					"name" : "q_start_clock",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/borbg/CLionProjects/ES-2T-Cam-Generator/cmake-build-debug",
+		"source" : "C:/Users/borbg/CLionProjects/ES-2T-Cam-Generator"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
