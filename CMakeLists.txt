@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-set(ProjectName "Quark")
+set(ProjectName "ES_2t_Generator")
 set(Subsystem "CONSOLE")
 set(testing false)
 
