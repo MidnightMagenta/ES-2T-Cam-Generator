@@ -1,16 +1,11 @@
-#include <../include/misc_functions.hpp>
-#include <../include/object.hpp>
-
-//define entry point of the application
-int run() {
-    return 1;
-}
-
+#include "../include/app.hpp"
 #include <../include/qrk_debug.hpp>
+
 #ifdef SUBSYSTEM_CONSOLE
-int main(){
+int main() {
     try {
-        return run();
+
+        return app::run();
     } catch (std::exception &e) {
         try {
             return std::stoi(e.what());
@@ -28,7 +23,7 @@ int main(){
 #elif SUBSYSTEM_WINDOWS
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow) {
     try {
-        return run();
+        return app::run();
     } catch (std::exception &e) {
         try {
             return std::stoi(e.what());

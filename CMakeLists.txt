@@ -4,7 +4,6 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 set(ProjectName "ES_2t_Generator")
 set(Subsystem "CONSOLE")
-set(testing false)
 
 project("${ProjectName}" VERSION 0.1)
 set(CMAKE_CXX_STANDARD 20)
@@ -22,13 +21,15 @@ add_custom_target(q_copy_resources ALL
         ${CMAKE_CURRENT_BINARY_DIR}/resources
 )
 
-add_subdirectory(Engine)
+add_subdirectory(engine)
 
 #app executable
 add_executable("${ProjectName}"
         #src files
         src/main.cpp
+        src/app.cpp
         #header files
+        include/app.hpp
 )
 
 if(Subsystem STREQUAL "CONSOLE")
@@ -41,23 +42,3 @@ endif ()
 
 add_dependencies("${ProjectName}" q_start_clock q_copy_resources)
 target_link_libraries("${ProjectName}" "${ProjectName}-engine")
-
-#Codebase testing executable
-if(testing)
-    add_executable("${ProjectName}-test"
-            #src files
-            testing/src/main.cpp
-            #header files
-    )
-
-    if(Subsystem STREQUAL "CONSOLE")
-        set_target_properties("${ProjectName}-test" PROPERTIES LINK_FLAGS /SUBSYSTEM:CONSOLE)
-        target_compile_definitions("${ProjectName}-test" PRIVATE SUBSYSTEM_CONSOLE)
-    elseif (Subsystem STREQUAL "WINDOWS")
-        set_target_properties("${ProjectName}-test" PROPERTIES LINK_FLAGS /SUBSYSTEM:WINDOWS)
-        target_compile_definitions("${ProjectName}-test" PRIVATE SUBSYSTEM_WINDOWS)
-    endif ()
-
-    add_dependencies("${ProjectName}-test" q_start_clock q_copy_resources)
-    target_link_libraries("${ProjectName}-test" "${ProjectName}-engine")
-endif ()
