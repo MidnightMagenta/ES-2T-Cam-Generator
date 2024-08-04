@@ -28,8 +28,10 @@ add_executable("${ProjectName}"
         #src files
         src/main.cpp
         src/app.cpp
+        src/ui.cpp
         #header files
         include/app.hpp
+        include/ui.hpp
 )
 
 if(Subsystem STREQUAL "CONSOLE")

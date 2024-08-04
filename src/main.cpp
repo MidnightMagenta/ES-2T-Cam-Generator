@@ -4,10 +4,10 @@
 #ifdef SUBSYSTEM_CONSOLE
 int main() {
     try {
-
         return app::run();
     } catch (std::exception &e) {
         try {
+            app::Terminate();
             return std::stoi(e.what());
         } catch (...) {
             const std::string error(e.what());
@@ -16,6 +16,7 @@ int main() {
             return -1;
         }
     } catch (...) {
+        app::Terminate();
         qrk::debug::LogError("Unhandled exception");
         return -1;
     }

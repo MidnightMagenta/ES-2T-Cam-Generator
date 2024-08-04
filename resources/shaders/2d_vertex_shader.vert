@@ -7,6 +7,7 @@ layout(std140, row_major) uniform uniformBlock{
 	mat4 rotation;
     vec2 position;
     vec2 size;
+    vec2 windowSize;
     vec4 color;
     float zLayer;
 };
@@ -22,5 +23,5 @@ void main()
     vPos = rotation * vPos;
     vec4 finalPos = vPos + vec4(position, 0, 0);
     finalPos.z = zLayer;
-    gl_Position = finalPos;
+    gl_Position = (finalPos - vec4(windowSize.x, -windowSize.y, 0, 0)) / vec4(windowSize.xy, 1, 1);
 }

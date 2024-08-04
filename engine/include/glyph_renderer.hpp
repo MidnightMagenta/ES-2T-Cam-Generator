@@ -25,6 +25,11 @@ public:
         texture.DeleteTexture();
         delete[] glyphs;
     }
+    void Delete() {
+        texture_bitmap.DeleteImage();
+        texture.DeleteTexture();
+        delete[] glyphs;
+    }
     GlyphData *GetGlyphData(char glyph) {
         if (glyph >= glyphCount + firstGlyph) {
             qrk::debug::Error("Invalid glyph", qrk::debug::Q_INVALID_ENUM);

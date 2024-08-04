@@ -24,8 +24,10 @@ LRESULT qrk::glWindow::WndProcess(UINT message, WPARAM wParam, LPARAM lParam) {
             RECT rect;
             if (GetClientRect(this->window, &rect)) {
                 qrk::vec2u size(
-                        {(unsigned int) rect.right - (unsigned int) rect.left,
-                         (unsigned int) rect.bottom - (unsigned int) rect.top});
+                    {
+                        (unsigned int) rect.right - (unsigned int) rect.left,
+                        (unsigned int) rect.bottom - (unsigned int) rect.top
+                    });
                 glViewport(0, 0, size.x(), size.y());
                 this->windowSize = size;
             }
@@ -40,7 +42,7 @@ LRESULT qrk::glWindow::WndProcess(UINT message, WPARAM wParam, LPARAM lParam) {
         case WM_MOUSEMOVE:
             if (mouseMovedCallback != nullptr) {
                 mouseMovedCallback(qrk::vec2i(
-                        {GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)}));
+                    {GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)}));
             }
             break;
         default:
@@ -116,33 +118,35 @@ bool qrk::glWindow::CreateContext(int multisamplingLevel, int glMajorVersion,
     }
     HDC dummyDeviceHandle = GetDC(dummyWindow);
 
-    PIXELFORMATDESCRIPTOR pfd = {sizeof(PIXELFORMATDESCRIPTOR),
-                                 1,
-                                 PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL |
-                                         PFD_DOUBLEBUFFER,
-                                 PFD_TYPE_RGBA,
-                                 32,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 0,
-                                 24,
-                                 8,
-                                 0,
-                                 PFD_MAIN_PLANE,
-                                 0,
-                                 0,
-                                 0,
-                                 0};
+    PIXELFORMATDESCRIPTOR pfd = {
+        sizeof(PIXELFORMATDESCRIPTOR),
+        1,
+        PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL |
+        PFD_DOUBLEBUFFER,
+        PFD_TYPE_RGBA,
+        32,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        8,
+        0,
+        PFD_MAIN_PLANE,
+        0,
+        0,
+        0,
+        0
+    };
 
     int pixelFormat = ChoosePixelFormat(dummyDeviceHandle, &pfd);
     SetPixelFormat(dummyDeviceHandle, pixelFormat, &pfd);
@@ -162,33 +166,37 @@ bool qrk::glWindow::CreateContext(int multisamplingLevel, int glMajorVersion,
     //create real context
     LoadContextCreationTools();
 
-    const int contextAttribs[] = {WGL_CONTEXT_MAJOR_VERSION_ARB,
-                                  glMajorVersion,
-                                  WGL_CONTEXT_MINOR_VERSION_ARB,
-                                  glMinorVersion,
-                                  WGL_CONTEXT_PROFILE_MASK_ARB,
-                                  WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-                                  0};
+    const int contextAttribs[] = {
+        WGL_CONTEXT_MAJOR_VERSION_ARB,
+        glMajorVersion,
+        WGL_CONTEXT_MINOR_VERSION_ARB,
+        glMinorVersion,
+        WGL_CONTEXT_PROFILE_MASK_ARB,
+        WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+        0
+    };
 
-    const int pixelFormatAttributes[] = {WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
-                                         //////////////////////
-                                         WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
-                                         //////////////////////
-                                         WGL_DOUBLE_BUFFER_ARB, GL_TRUE,
-                                         //////////////////////
-                                         WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB,
-                                         //////////////////////
-                                         WGL_COLOR_BITS_ARB, 32,
-                                         //////////////////////
-                                         WGL_DEPTH_BITS_ARB, 24,
-                                         //////////////////////
-                                         WGL_STENCIL_BITS_ARB, 8,
-                                         //////////////////////
-                                         WGL_SAMPLE_BUFFERS_ARB, 1,
-                                         //////////////////////
-                                         WGL_SAMPLES_ARB, multisamplingLevel,
-                                         //////////////////////
-                                         0};
+    const int pixelFormatAttributes[] = {
+        WGL_DRAW_TO_WINDOW_ARB, GL_TRUE,
+        //////////////////////
+        WGL_SUPPORT_OPENGL_ARB, GL_TRUE,
+        //////////////////////
+        WGL_DOUBLE_BUFFER_ARB, GL_TRUE,
+        //////////////////////
+        WGL_PIXEL_TYPE_ARB, WGL_TYPE_RGBA_ARB,
+        //////////////////////
+        WGL_COLOR_BITS_ARB, 32,
+        //////////////////////
+        WGL_DEPTH_BITS_ARB, 24,
+        //////////////////////
+        WGL_STENCIL_BITS_ARB, 8,
+        //////////////////////
+        WGL_SAMPLE_BUFFERS_ARB, 1,
+        //////////////////////
+        WGL_SAMPLES_ARB, multisamplingLevel,
+        //////////////////////
+        0
+    };
     int msPixelFormat;
     UINT numFormats;
     deviceContext = GetDC(window);
@@ -229,10 +237,10 @@ bool qrk::glWindow::CreateContext(int multisamplingLevel, int glMajorVersion,
 void qrk::glWindow::LoadContextCreationTools() {
     wglCreateContextAttribsARB =
             (PFNWGLCREATECONTEXTATTRIBSARBPROC) wglGetProcAddress(
-                    "wglCreateContextAttribsARB");
+                "wglCreateContextAttribsARB");
     wglChoosePixelFormatARB =
             (PFNWGLCHOOSEPIXELFORMATARBPROC) wglGetProcAddress(
-                    "wglChoosePixelFormatARB");
+                "wglChoosePixelFormatARB");
     wglSwapIntervalEXT =
             (PFNWGLSWAPINTERVALEXTPROC) wglGetProcAddress("wglSwapIntervalEXT");
     if (wglCreateContextAttribsARB == nullptr ||

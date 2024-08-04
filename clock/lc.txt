@@ -17,7 +17,6 @@ ES_2t_Generator.exe
 
 -Tools
 devenv.exe
-clion64.exe
 blender.exe
 
 -Keywords

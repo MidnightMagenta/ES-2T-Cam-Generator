@@ -71,8 +71,11 @@ struct UniformData2D {
     qrk::mat4 rotation = identity4();
     qrk::vec2f position = qrk::vec2f({0, 0});
     qrk::vec2f size = qrk::vec2f({1, 1});
+    qrk::vec2f windowSize = qrk::vec2f({0, 0});
+    char padding[8];
     qrk::vec4f color = qrk::vec4f({1, 1, 1, 1});
     float zLayer = 0.f;
+    char padding2[12];
 };
 struct UniformDataText {
     qrk::vec4f color = qrk::vec4f({1, 1, 1, 1});

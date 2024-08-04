@@ -146,19 +146,17 @@ void qrk::qb_GL_Renderer::Draw() {
     //2d draw
     this->q_2dDraw.UseProgram();
 
+    float screenSizeX = static_cast<float>(screenSize.x());
+    float screenSizeY = static_cast<float>(screenSize.y());
+
     for (int i = 0; i < q_2dObjects.size(); i++) {
-        UBO2D_Data.position = qrk::vec2f(
-                {(q_2dObjects[i].position.x() - ((float) screenSize.x() / 2)) /
-                         ((float) screenSize.x() / 2),
-                 -(q_2dObjects[i].position.y() - ((float) screenSize.y()) / 2) /
-                         ((float) screenSize.y() / 2)});
-        UBO2D_Data.size =
-                qrk::vec2f({q_2dObjects[i].size.x() / (float) screenSize.x(),
-                            q_2dObjects[i].size.y() / (float) screenSize.y()});
+        UBO2D_Data.position = q_2dObjects[i].position;
+        UBO2D_Data.size = q_2dObjects[i].size;
         qrk::mat4 rotMatrix =
                 qrk::CreateRotationMatrix(q_2dObjects[i].rotation, 0.f, 0.f);
         UBO2D_Data.rotation = rotMatrix;
         UBO2D_Data.zLayer = q_2dObjects[i].zLayer;
+        UBO2D_Data.windowSize = qrk::vec2f({screenSizeX, screenSizeY});
         UBO2D_Data.color =
                 qrk::vec4f({q_2dObjects[i].color.r, q_2dObjects[i].color.b,
                             q_2dObjects[i].color.g, q_2dObjects[i].color.a});
@@ -246,8 +244,6 @@ void qrk::qb_GL_Renderer::Draw() {
 
     //text drawing
     q_textDraw.UseProgram();
-    float screenSizeX = static_cast<float>(screenSize.x());
-    float screenSizeY = static_cast<float>(screenSize.y());
     UBO_Text_data.screenSize = qrk::vec2f({screenSizeX, screenSizeY});
     for (int i = 0; i < q_Text.size(); i++) {
         UBO_Text_data.zLayer = q_Text[i].zLayer;
