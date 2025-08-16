@@ -1,29 +1,41 @@
+# ES 2-stroke Camshaft Generator
+
+A small CLI tool for generating camshafts used to replicate the physical characteristics of 2 stroke engines, in AngeTheGreat's Engine Simulator.
+
 ## How to use
 
-Extract the archive into any folder, open ES-2T-gen.exe, specify 
+The program may be used in two ways. CLI, or Interactive.
 
-- stroke - engine stroke in milimeters
+### Using the program in CLI mode
 
-- Rod length - connecting rod length in milimeters
+To use the program in this mode, it must be extracted into a folder that is contained in the PATH enviromental variable, or the full path to the program must be specified when calling it.
 
-- Exhaust port height - exhaust port height in millimeters
+To generate camshafts, use `escamgen generate`. `escamgen generate --help` may be used to view available options.
 
-- Exhaust port offset - exhaust port edge offset from cylinder top in millimeters
+### Using the program in interactive mode
 
-- Transfer port height - transfer port height in millimeters
+To use the program in this mode, either call `escamgen generate --interactive` from the command line. The program will ask you to specify the following parameters:
 
-- Transfer port offset - transfer port offset from cylinder bottom in millimeters
+ - Stroke - engine stroke in milimeters
+ - Rod length - the length of the connecting rod in milimeters
+ - Exhaust port height - the height of the exhaust port in milimeters
+ - Exhaust port offset - the offset of the exhaust port in milimeters, relative to the top of the cylinder
+ - Transfer port height - the height of the transfer port in milimeters
+ - Transfer port offset - the offset of the transfer port in milimeters, reelative to the bottom of the cylinder
+ - Step count - the number of steps to calculate. The number of generated samples per camshaft lobe will be (360 / stepCount) * 2 + 1
+ - Output path - a path to a regular file (e.g. `path/to/file.txt`). If a file already exists, the program will ask whether you want to overwrite it.
 
-- Path - any valid path to any folder on your computer *do not specify the file name, the program names your file automatically*
+ ## How to build
 
-This is a very rough program, you may report bugs, I will try to fix them, but I do not promise to maintain this program. If there is enough interest, I will post updates to make it more robust, and easier to use.
+ To build the program, you must have [cmake](https://cmake.org/download/) installed.
+ 
+ From any directory, call `git clone https://github.com/MidnightMagenta/ES-2T-Cam-Generator.git`
+ 
+ From the directory into which the repository was cloned, call 
 
-This software may create and modify files on your system. I have added failsafes to ensure no file is accidentally corrupted, however you should avoid specifying paths that may contain sensitive data
-
-## What do these parameters do?
-
-Port height determines how tall the exhaust port is, or how large the opening is
-
-Port offset determines how far away from the top or bottom of the cylinder the port is located
-
-![](assets/2t_engine_diagram.png)
+ ```
+ mkdir build
+ cd build
+ cmake ..
+ cmake --build .
+ ```

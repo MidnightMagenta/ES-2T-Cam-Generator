@@ -1,0 +1,3 @@
+[submodule "dependencies/submodules/MidnightMath"]
+	path = dependencies/submodules/MidnightMath
+	url = https://github.com/MidnightMagenta/MidnightMath.git
