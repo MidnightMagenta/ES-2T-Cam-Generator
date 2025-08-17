@@ -1,5 +1,17 @@
 # ES 2-stroke Camshaft Generator
 
+## Note
+
+Windows Defender has a tendency to flag unsigned binaries as "trojan" or "serious threats"
+
+Because this project is open source, not commercial, and I make $0 from it, I cannot justify purchasing or maintaining a code signing certificate. 
+
+To avoid giving users a false sense of insecurity and damaging my reputation, as well as the reputation of the project, I will not be publishing prebuilt binaries
+
+If you want to use this software, please see the [How to build](#how-to-build) section for instructions on building from source.
+
+## Description
+
 A small CLI tool for generating camshafts used to replicate the physical characteristics of 2 stroke engines, in AngeTheGreat's Engine Simulator.
 
 ## How to use
@@ -27,7 +39,7 @@ To use the program in this mode, either call `escamgen generate --interactive` f
 
  ## How to build
 
- To build the program, you must have [cmake](https://cmake.org/download/) installed.
+ To build the program, you must have [cmake](https://cmake.org/download/) installed. You must also have a compiler installed (for example, [MSVC](https://visualstudio.microsoft.com/downloads/) for Windows)
  
  From any directory, call `git clone https://github.com/MidnightMagenta/ES-2T-Cam-Generator.git`
  
@@ -38,4 +50,5 @@ To use the program in this mode, either call `escamgen generate --interactive` f
  cd build
  cmake ..
  cmake --build .
+
  ```
