@@ -6,7 +6,7 @@ Windows Defender has a tendency to flag unsigned binaries as "trojan" or "seriou
 
 Because this project is open source, not commercial, and I make $0 from it, I cannot justify purchasing or maintaining a code signing certificate. 
 
-To avoid giving users a false sense of insecurity and damaging my reputation, as well as the reputation of the project, I will not be publishing prebuilt binaries
+To avoid giving users a false sense of insecurity and damaging my reputation, as well as the reputation of the project, I will no longer be publishing prebuilt binaries
 
 If you want to use this software, please see the [How to build](#how-to-build) section for instructions on building from source.
 
@@ -33,7 +33,7 @@ To use the program in this mode, either call `escamgen generate --interactive` f
  - Exhaust port height - the height of the exhaust port in milimeters
  - Exhaust port offset - the offset of the exhaust port in milimeters, relative to the top of the cylinder
  - Transfer port height - the height of the transfer port in milimeters
- - Transfer port offset - the offset of the transfer port in milimeters, reelative to the bottom of the cylinder
+ - Transfer port offset - the offset of the transfer port in milimeters, relative to the bottom of the cylinder
  - Step count - the number of steps to calculate. The number of generated samples per camshaft lobe will be (360 / stepCount) * 2 + 1
  - Output path - a path to a regular file (e.g. `path/to/file.txt`). If a file already exists, the program will ask whether you want to overwrite it.
 
@@ -52,3 +52,4 @@ To use the program in this mode, either call `escamgen generate --interactive` f
  cmake --build .
 
  ```
+
